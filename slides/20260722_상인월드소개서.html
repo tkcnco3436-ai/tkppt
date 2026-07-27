@@ -466,7 +466,7 @@
   var slides=[].slice.call(document.querySelectorAll('.slide')); var idx=0; var deck=document.getElementById('deck');
   // 페이지번호 자동 채움 (footer의 빈 <b>)
   slides.forEach(function(s,k){ var b=s.querySelector('.foot b'); if(b) b.textContent=String(k+1).padStart(2,'0'); });
-  function fit(){ var s=innerWidth/1920; deck.style.transform='scale('+s+')'; }
+  function fit(){ var s=Math.min(innerWidth/1920, innerHeight/1080); deck.style.transform='scale('+s+')'; }
   function show(i){ idx=Math.max(0,Math.min(slides.length-1,i)); slides.forEach(function(s,k){s.classList.toggle('active',k===idx);}); document.getElementById('pg').textContent=(idx+1)+' / '+slides.length; }
   document.getElementById('prev').onclick=function(){show(idx-1);};
   document.getElementById('next').onclick=function(){show(idx+1);};
